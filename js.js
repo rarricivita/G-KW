@@ -7,13 +7,27 @@ const main_div = document.querySelector("#main");
 //const out2 = document.querySelector("#out2");
 //const out3 = document.querySelector("#out3");
 
-const button = document.querySelector("button");
+const genKey = document.querySelector("#generate-key");
+const titleCase = document.querySelector("#titlecase");
+const upperCase = document.querySelector("#uppercase");
+const lowerCase = document.querySelector("#lowercase");
 
 var keyword = []
 
 function getKeyword(kw){
-    arr = kw.split("|")
+    arr = kw.split("\n")
     keyword = arr
+}
+
+function titleCasing(kw){
+    kw = kw.tolowerCase()
+    arr = kw.split("\n")
+    capitalized = []
+    for(line in arr){
+        word = line.split(" ")
+        
+
+    }
 }
 
 function removeComma(cs){
@@ -49,7 +63,7 @@ function elements(keyw){
     div_name.textContent = "KW" + keyIndex;
     keyIndex++;
     div_out1.value = keyw + " | " + removeComma(cityState.value) + " | " + websiteName.value;
-    div_out2.value = keyw + " in " +  cityState.value;
+    div_out2.value = keyw + " in " +  cityState.value + ".";
     div_out3.value = link(keyw, cityState.value);
 
     // add classes and attributes
@@ -59,9 +73,9 @@ function elements(keyw){
     div_out2.classList.add('output')
     div_out3.classList.add('output')
 
-    div_out1.setAttribute('disabled', '')
-    div_out2.setAttribute('disabled', '')
-    div_out3.setAttribute('disabled', '')
+    div_out1.setAttribute('readonly', '')
+    div_out2.setAttribute('readonly', '')
+    div_out3.setAttribute('readonly', '')
 
     div_out1.setAttribute('type', 'text')
     div_out2.setAttribute('type', 'text')
@@ -71,14 +85,36 @@ function elements(keyw){
     // append to DOM
     div_sec.appendChild(div_name)
     div_sec.appendChild(div_out1)
-    div_sec.appendChild(div_out2)
+    // div_sec.appendChild(div_out2)
     div_sec.appendChild(div_out3)
     main_div.appendChild(div_sec)
 }
+//=======================================================================
+function titleCasing(kw){
+    kw = kw.toLowerCase()
+    arr = kw.split("\n")
+    sentence = []
+    line = []
 
+    for(var i = 0; i < arr.length; i++)
+    {
+        words = arr[i].split(" ")
 
+        for(var y = 0; y < words.length; y++)
+        {
+            word = words[y].charAt(0).toUpperCase() + words[y].slice(1)
+            line.push(word)
+        }
+        sentence.push(line.join(' '))
+        line = []
+    }
+    return sentence.join("\n")
+}
+//=======================================================================
 
-button.addEventListener('click', function(){
+genKey.addEventListener('click', function(){
+	main_div.innerHTML = "";
+	keyIndex = 1;
 
     getKeyword(keywords.value)
 
@@ -91,4 +127,20 @@ button.addEventListener('click', function(){
     //out2.value = keywords.value + " in " +  cityState.value;
     //out3.value = link(keywords.value, cityState.value);
 })
+
+upperCase.addEventListener('click', function(){
+    keys = keywords.value
+    keywords.value = keys.toUpperCase()
+})
+lowerCase.addEventListener('click', function(){
+    keys = keywords.value
+    keywords.value = keys.toLowerCase()
+})
+titleCase.addEventListener('click', function(){
+    keys = keywords.value
+    
+    keywords.value = titleCasing(keys)
+})
+
+
 

@@ -2,43 +2,94 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: rgb(255, 255, 255);
+}
+
+body{
+	color:smokewhite;
+    background-color: darkslategray;
+    
 }
 
 
 #inputFields{
-    text-align: center;
-    position: fixed;
     width: 100%;
     z-index: 2;
+    background: transparent;
+
+    display: grid;
+    grid-template-columns: 2fr 5fr;
+    padding: 5px;
 }
 
+#keywords{
+    display: grid;
+    grid-column: 1/2;
+    grid-template-columns: 1fr;
+}
+
+.case-button{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.case-type{
+    display: grid;
+    height: 40px;
+}
+
+#cityState{
+    display: grid;
+    grid-column: 2/3;
+}
+#websiteName{
+    display: grid;
+    grid-column: 2/3;
+}
+
+
 textarea{
-    font-size: 18px;
+    font-size: 14px;
+    padding: 5px;
 }
 
 #cityState > input, #websiteName > input{
     width: 350px;
-    height: 30px;
-    font-size: 18px;
+    height: 40px;
+    font-size: 14px;
+
+    transition: 0.3s;
 }
 
-button{
+
+ #generate-key{
     font-size: 15px;
     width: 350px;
     height: 50px;
+    display: block;
+    transition: 0.3s;
+}
+
+button{
+    background: #01415f;
+    color: #ffffff;
+}
+
+button:hover{
+    background-color: #444443;
+    color: rgb(255, 255, 255);
 }
 
 /* ================================== */
 
 #main{
-    position: relative;
-    margin-top: 215px;
+    position: absolute;
+    width: 70%;
+    border: solid 1px pink;
+    
+    
 }
 
 .section{
-    width: 60%;
-    margin: 3px;
     display: grid;
     grid-template-columns: 1fr 6fr;
     
@@ -60,14 +111,14 @@ button{
 }
 
 .output{
-    width: 95%;
+    width: 99%;
     font-size: 15px;
     color: black;
     height: 30px;
     margin: 2px;
 }
 
-input:disabled{
+input:disable{
     background-color: rgb(224, 224, 224);
 }
 .section:nth-child(odd){
