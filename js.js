@@ -1,16 +1,27 @@
+const extra = document.querySelector("#meta");
+extra.innerText = '<meta name="keywords" content=""/>';
+
+
+//===========================================================================
+//=== Input ====
 const keywords = document.querySelector("#keywords > textarea");
 const cityState = document.querySelector("#cityState > input");
 const websiteName = document.querySelector("#websiteName > input");
+//=== Output ===
 const main_div = document.querySelector("#main");
+const metaSeo = document.querySelector("#meta-seo");
 
 //const out1 = document.querySelector("#out1");
 //const out2 = document.querySelector("#out2");
 //const out3 = document.querySelector("#out3");
 
+//=== Buttons ====
 const genKey = document.querySelector("#generate-key");
+const clrKey = document.querySelector("#clear-key");
 const titleCase = document.querySelector("#titlecase");
 const upperCase = document.querySelector("#uppercase");
 const lowerCase = document.querySelector("#lowercase");
+const advSeo = document.querySelector("#btn-seo");
 
 var keyword = []
 
@@ -85,11 +96,37 @@ function elements(keyw){
     // append to DOM
     div_sec.appendChild(div_name)
     div_sec.appendChild(div_out1)
-    // div_sec.appendChild(div_out2)
+    //div_sec.appendChild(div_out2)
     div_sec.appendChild(div_out3)
     main_div.appendChild(div_sec)
 }
 //=======================================================================
+
+
+genKey.addEventListener('click', function(){
+	main_div.innerHTML = "";
+	keyIndex = 1;
+
+    getKeyword(keywords.value)
+
+    for(var item of keyword){
+        elements(item)
+    }
+    
+    
+    //out1.value = keywords.value + " | " + removeComma(cityState.value) + " | " + websiteName.value;
+    //out2.value = keywords.value + " in " +  cityState.value;
+    //out3.value = link(keywords.value, cityState.value);
+})
+
+
+clrKey.addEventListener('click', function(){
+	main_div.innerHTML = "";
+})
+
+
+//=======================================================================
+
 function titleCasing(kw){
     kw = kw.toLowerCase()
     arr = kw.split("\n")
@@ -112,22 +149,6 @@ function titleCasing(kw){
 }
 //=======================================================================
 
-genKey.addEventListener('click', function(){
-	main_div.innerHTML = "";
-	keyIndex = 1;
-
-    getKeyword(keywords.value)
-
-    for(var item of keyword){
-        elements(item)
-    }
-    
-    
-    //out1.value = keywords.value + " | " + removeComma(cityState.value) + " | " + websiteName.value;
-    //out2.value = keywords.value + " in " +  cityState.value;
-    //out3.value = link(keywords.value, cityState.value);
-})
-
 upperCase.addEventListener('click', function(){
     keys = keywords.value
     keywords.value = keys.toUpperCase()
@@ -142,5 +163,22 @@ titleCase.addEventListener('click', function(){
     keywords.value = titleCasing(keys)
 })
 
+//========================================================== Advance SEO
 
+function advSeoKeys(){
+    final = []
 
+    keys = keyword.join(", ")
+    final.push('<meta name="keywords" content="' +keys+ '"/>'+'\n')
+
+    for(kws in keyword){
+        final.push('<meta name="keywords" content="' +keyword[kws]+ '"/>')
+    }
+    metaSeo.innerHTML = final.join("\n\n")
+    
+}
+
+advSeo.addEventListener('click', function(){
+    getKeyword(keywords.value)
+    advSeoKeys()
+})
