@@ -163,6 +163,8 @@ titleCase.addEventListener('click', function(){
     keywords.value = titleCasing(keys)
 })
 
+
+
 //========================================================== Advance SEO
 
 function advSeoKeys(){
