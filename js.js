@@ -32,6 +32,8 @@ function getKeyword(kw){
     keyword = arr
 }
 
+
+/* ???
 function titleCasing(kw){
     kw = kw.tolowerCase()
     arr = kw.split("\n")
@@ -42,6 +44,7 @@ function titleCasing(kw){
 
     }
 }
+*/
 
 function removeComma(cs){
     filtered = [];
@@ -103,7 +106,7 @@ function elements(keyw){
     main_div.appendChild(div_sec)
 }
 //=======================================================================
-
+//GENERATE
 
 genKey.addEventListener('click', function(){
 	main_div.innerHTML = "";
@@ -119,7 +122,7 @@ genKey.addEventListener('click', function(){
     //out1.value = keywords.value + " | " + removeComma(cityState.value) + " | " + websiteName.value;
     //out2.value = keywords.value + " in " +  cityState.value;
     //out3.value = link(keywords.value, cityState.value);
-    getKeyword(keywords.value)
+    
     advSeoKeys()
 })
 
@@ -131,6 +134,8 @@ clrKey.addEventListener('click', function(){
 
 
 //=======================================================================
+
+// KEYWORD CASE
 
 function titleCasing(kw){
     kw = kw.toLowerCase()
@@ -171,7 +176,8 @@ titleCase.addEventListener('click', function(){
 
 
 
-//========================================================== Advance SEO
+//========================================================== 
+//Advance SEO
 
 function advSeoKeys(){
     final = []
@@ -199,7 +205,8 @@ advSeo.addEventListener('click', function(){
 
 
 
-
+//========================================================== 
+// Trim Button
 
 rmvKeys.addEventListener('click', function(){
     trimmed = []
