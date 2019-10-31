@@ -176,8 +176,10 @@ titleCase.addEventListener('click', function(){
 function advSeoKeys(){
     final = []
 
+    /* Learn More Page Meta
     keys = keyword.join(", ")
     final.push('<meta name="keywords" content="' +keys+ '"/>'+'\n')
+    */
 
     for(kws in keyword){
         final.push('<meta name="keywords" content="' +keyword[kws]+ '"/>')
