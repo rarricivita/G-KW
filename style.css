@@ -102,6 +102,20 @@ button:hover{
     color: rgb(255, 255, 255);
 }
 
+#remove-keyword-number:hover span{
+    display: none;
+}
+
+#remove-keyword-number:hover{
+    background-color: #770202;
+}
+
+#remove-keyword-number:hover:before {
+    content:"HEY! Make sure keyword doesn't start with numbers; Ex. '3D Printing'";
+    color: rgb(252, 252, 252);
+}
+
+
 /* ================================== */
 
 #main{

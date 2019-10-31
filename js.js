@@ -11,6 +11,7 @@ const websiteName = document.querySelector("#websiteName > input");
 const main_div = document.querySelector("#main");
 const metaSeo = document.querySelector("#meta-seo");
 
+
 //const out1 = document.querySelector("#out1");
 //const out2 = document.querySelector("#out2");
 //const out3 = document.querySelector("#out3");
@@ -22,6 +23,7 @@ const titleCase = document.querySelector("#titlecase");
 const upperCase = document.querySelector("#uppercase");
 const lowerCase = document.querySelector("#lowercase");
 const advSeo = document.querySelector("#btn-seo");
+const rmvKeys = document.querySelector("#remove-keyword-number");
 
 var keyword = []
 
@@ -117,11 +119,14 @@ genKey.addEventListener('click', function(){
     //out1.value = keywords.value + " | " + removeComma(cityState.value) + " | " + websiteName.value;
     //out2.value = keywords.value + " in " +  cityState.value;
     //out3.value = link(keywords.value, cityState.value);
+    getKeyword(keywords.value)
+    advSeoKeys()
 })
 
 
 clrKey.addEventListener('click', function(){
-	main_div.innerHTML = "";
+    main_div.innerHTML = "";
+    metaSeo.innerHTML = "";
 })
 
 
@@ -147,7 +152,8 @@ function titleCasing(kw){
     }
     return sentence.join("\n")
 }
-//=======================================================================
+
+
 
 upperCase.addEventListener('click', function(){
     keys = keywords.value
@@ -180,7 +186,54 @@ function advSeoKeys(){
     
 }
 
+/*
+// hidden button
 advSeo.addEventListener('click', function(){
     getKeyword(keywords.value)
     advSeoKeys()
 })
+*/
+
+
+
+
+
+
+rmvKeys.addEventListener('click', function(){
+    trimmed = []
+    
+    keys = keywords.value
+
+    arr = keys.split("\n")
+    
+    for(item in arr){
+        var check = arr[item].slice(0,8)
+        if(check == "Keyword "){
+
+            var a = arr[item].replace('Keyword ','')
+
+            if(a[0] >= 1 || a[0] <= 9){
+                if(a[1] >= 0 && a[1] <= 9){
+                    trimmed.push(a.slice(2))
+                    //a.slice(2)
+                }
+                else{
+                    trimmed.push(a.slice(1))
+                    //a.slice(1)
+                }
+            }
+
+        }else{
+            trimmed.push(arr[item])
+        }
+    }
+
+    keywords.value = trimmed.join("\n")
+})
+
+
+
+
+
+
+
