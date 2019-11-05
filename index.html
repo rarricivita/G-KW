@@ -7,7 +7,7 @@
     <title>Key Word Encode Generator</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body><div class="wrapper"></div><!--wrapper-->
+<body>
     <div id="inputFields">
         <div id="keywords">
             <div class="case-button">
@@ -17,10 +17,10 @@
             </div>
             <button id="remove-keyword-number" class="case-type"><span>TRIM Keyword_00</span></button>
             <textarea name="kw" id="" cols="50" rows="30" placeholder="Use Enterkey as a divider"></textarea>
-
+            <button id="clear-key" class="case-type">Clear All</button>
             <!-- <button id="btn-seo" class="case-type">ADVANCE SEO</button> -->
             
-            <textarea name="" id="meta-seo" cols="90" rows="30" readonly="" placeholder="ADVANCE SEO"></textarea>
+            <!--<textarea name="" id="meta-seo" cols="90" rows="30" readonly="" placeholder="ADVANCE SEO"></textarea>-->
         </div>
 
         <div class="rightSide">
@@ -28,18 +28,20 @@
             <div id="cityState">
                 <input type="text" placeholder="CITY, STATE; ex. Las Vegas, Nevada">
             </div>
+                        
             <div class="extra" id=meta></div>
-            <div class="extra"></div>
-            <div class="extra">SITE MANAGEMENT</div>
             <div class="extra">HIDE Pages if content is not written yet</div>
             <div class="extra">VISITOR ANALYTICS > New Page (Hide) <br> SEO(Google) Search Result > off</div>
+            <div class="extra"></div>
+            <div class="extra"></div>
             <div class="extra"></div>
             
             
             <div id="websiteName">
                 <input type="text" placeholder="BUSINESS NAME; ex. Our Company">
                 <button id="generate-key">Generate</button>
-                <button id="clear-key">Clear</button>
+                <!--<button id="clear-key">Clear</button>-->
+                <button id="btn-seo">Advance SEO</button>
             </div>
 
             
@@ -51,6 +53,7 @@
                         <input id="out2" class="output" type="text" disabled>
                         <input id="out3" class="output" type="text" disabled>
             </div>-->
+            
             </div>
 
         </div>

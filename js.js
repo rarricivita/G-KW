@@ -1,5 +1,5 @@
 const extra = document.querySelector("#meta");
-extra.innerText = '<meta name="keywords" content=""/>';
+extra.innerText = '<meta name="keywords" content=""/>\n SITE MANAGEMENT';
 
 
 //===========================================================================
@@ -32,19 +32,6 @@ function getKeyword(kw){
     keyword = arr
 }
 
-
-/* ???
-function titleCasing(kw){
-    kw = kw.tolowerCase()
-    arr = kw.split("\n")
-    capitalized = []
-    for(line in arr){
-        word = line.split(" ")
-        
-
-    }
-}
-*/
 
 function removeComma(cs){
     filtered = [];
@@ -115,7 +102,9 @@ genKey.addEventListener('click', function(){
     getKeyword(keywords.value)
 
     for(var item of keyword){
-        elements(item)
+        if(item != ""){
+            elements(item)
+        }
     }
     
     
@@ -123,18 +112,21 @@ genKey.addEventListener('click', function(){
     //out2.value = keywords.value + " in " +  cityState.value;
     //out3.value = link(keywords.value, cityState.value);
     
-    advSeoKeys()
+    
 })
 
 
+
+//=======================================================================
+//Clear Button
 clrKey.addEventListener('click', function(){
     main_div.innerHTML = "";
-    metaSeo.innerHTML = "";
+    //metaSeo.innerHTML = "";
+    keywords.value = "";
 })
 
 
 //=======================================================================
-
 // KEYWORD CASE
 
 function titleCasing(kw){
@@ -176,23 +168,72 @@ titleCase.addEventListener('click', function(){
 
 
 
+
+
 //========================================================== 
-//Advance SEO
+//Advance SEO Element creation
+
+function advSeoElement(item){
+
+    const outMeta = document.createElement('input')
+
+    outMeta.value = item
+
+    outMeta.classList.add('output')
+
+    outMeta.setAttribute('readonly', '')
+
+    outMeta.setAttribute('type', 'text')
+
+    main_div.appendChild(outMeta)
+
+}
+
+//========================================================== 
+//Advance SEO function
 
 function advSeoKeys(){
     final = []
-
+    temp = [] 
+    var formTheTemp
+    
     /* Learn More Page Meta
     keys = keyword.join(", ")
     final.push('<meta name="keywords" content="' +keys+ '"/>'+'\n')
     */
 
     for(kws in keyword){
-        final.push('<meta name="keywords" content="' +keyword[kws]+ '"/>')
+        if(keyword[kws] != ""){
+            temp.push(keyword[kws])
+            if(keyword.length -1 == kws){
+                formTheTemp = temp.join(', ')
+                final.push('<meta name="keywords" content="' +formTheTemp+ '"/>')
+            }
+        }else{
+            formTheTemp = temp.join(', ')
+            final.push('<meta name="keywords" content="' +formTheTemp+ '"/>')
+            temp = []
+        }
+        
+        //final.push('<meta name="keywords" content="' +keyword[kws]+ '"/>')
     }
-    metaSeo.innerHTML = final.join("\n\n")
-    
+    //metaSeo.innerHTML = final.join("\n\n")
+    for(var item of final){
+        advSeoElement(item)
+    }
 }
+
+//=======================================================================
+//ADVANCE SEO Button
+
+advSeo.addEventListener('click', function(){
+    main_div.innerHTML = "";    
+    getKeyword(keywords.value)
+    advSeoKeys()
+})
+
+
+
 
 /*
 // hidden button

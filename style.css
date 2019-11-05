@@ -6,8 +6,7 @@
 
 body{
 	color:smokewhite;
-    background-color: rgb(31, 30, 30);
-    
+    background-color: rgb(22, 22, 22);
 }
 
 
@@ -37,10 +36,17 @@ body{
     height: 40px;
 }
 
+#clear-key{
+    background: #000000;
+}
+#clear-key:hover{
+    background: #770202;
+}
+
 .rightSide{
     display: grid;
     grid-auto-rows: 41px;
-    grid-template-columns: 5fr 5fr 2fr;
+    grid-template-columns: 4fr 3fr 3fr;
 }
 
 #cityState{
@@ -89,16 +95,17 @@ textarea{
     font-size: 15px;
     height: 42px;
     display: block;
-    transition: 0.3s;
+    
 }
 
 button{
-    background: #01415f;
+    background: #012c41;
     color: #ffffff;
+    transition: 0.3s;
 }
 
 button:hover{
-    background-color: #444443;
+    background-color: #014e1b;
     color: rgb(255, 255, 255);
 }
 
