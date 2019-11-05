@@ -123,6 +123,8 @@ clrKey.addEventListener('click', function(){
     main_div.innerHTML = "";
     //metaSeo.innerHTML = "";
     keywords.value = "";
+    cityState.value = "";
+    websiteName.value = "";
 })
 
 
