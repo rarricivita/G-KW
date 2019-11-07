@@ -23,6 +23,7 @@ const titleCase = document.querySelector("#titlecase");
 const upperCase = document.querySelector("#uppercase");
 const lowerCase = document.querySelector("#lowercase");
 const advSeo = document.querySelector("#btn-seo");
+const advSeo2 = document.querySelector("#btn-seo-2");
 const rmvKeys = document.querySelector("#remove-keyword-number");
 
 var keyword = []
@@ -225,6 +226,29 @@ function advSeoKeys(){
     }
 }
 
+//================= Pages List
+
+function advSeoKeys2(){
+    final = []
+    temp = [] 
+    var formTheTemp
+    
+    /* Learn More Page Meta
+    keys = keyword.join(", ")
+    final.push('<meta name="keywords" content="' +keys+ '"/>'+'\n')
+    */
+
+    for(kws in keyword){
+        if(keyword[kws] != ""){
+            final.push('<meta name="keywords" content="' +keyword[kws]+ '"/>')
+        }
+    }
+
+    for(var item of final){
+        advSeoElement(item)
+    }
+}
+
 //=======================================================================
 //ADVANCE SEO Button
 
@@ -234,6 +258,13 @@ advSeo.addEventListener('click', function(){
     advSeoKeys()
 })
 
+//================= Pages List
+
+advSeo2.addEventListener('click', function(){
+    main_div.innerHTML = "";
+    getKeyword(keywords.value)
+    advSeoKeys2()
+})
 
 
 
@@ -260,9 +291,9 @@ rmvKeys.addEventListener('click', function(){
     
     for(item in arr){
         var check = arr[item].slice(0,8)
-        if(check == "Keyword "){
+        if(check == "Keyword " || check == "KEYWORD " || check == "keyword "){
 
-            var a = arr[item].replace('Keyword ','')
+            var a = arr[item].replace(check,'')
 
             if(a[0] >= 1 || a[0] <= 9){
                 if(a[1] >= 0 && a[1] <= 9){
