@@ -49,7 +49,7 @@ function link(kw, cs){
     removedComma = this.removeComma(cs)
     arrkw = kw.toLowerCase().split(" ").join("-")
     arrcs = removedComma.toLowerCase().split(" ").join("-")
-    return arrkw + "-" +arrcs
+    return arrkw //+ "-" +arrcs // removing City State in URL (link)
 }
 
 var keyIndex = 1;
