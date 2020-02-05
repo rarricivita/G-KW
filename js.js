@@ -33,6 +33,17 @@ function getKeyword(kw){
     keyword = arr
 }
 
+function changeToAnd(keyword){
+    for(item in keyword){
+        sentence = keyword[item].split(" ")
+        for(word in sentence){
+            if(sentence[word] == "&"){
+                sentence[word] = "and"
+            }
+        }
+        keyword[item] = sentence.join(" ")
+    }
+}
 
 function removeComma(cs){
     filtered = [];
@@ -89,7 +100,7 @@ function elements(keyw){
     // append to DOM
     div_sec.appendChild(div_name)
     div_sec.appendChild(div_out1)
-    //div_sec.appendChild(div_out2)
+    div_sec.appendChild(div_out2)
     div_sec.appendChild(div_out3)
     main_div.appendChild(div_sec)
 }
@@ -199,6 +210,12 @@ function advSeoKeys(){
     final = []
     temp = [] 
     var formTheTemp
+
+    // === & to and ----------------------
+    word = []
+    sentence = []
+    changeToAnd(keyword)
+    // === & to and ----------------------
     
     /* Learn More Page Meta
     keys = keyword.join(", ")
@@ -232,6 +249,16 @@ function advSeoKeys2(){
     final = []
     temp = [] 
     var formTheTemp
+
+    word = []
+    sentence = []
+
+    // === & to and ----------------------
+    word = []
+    sentence = []
+    changeToAnd(keyword)
+    // === & to and ----------------------
+
     
     /* Learn More Page Meta
     keys = keyword.join(", ")
@@ -243,6 +270,7 @@ function advSeoKeys2(){
             final.push('<meta name="keywords" content="' +keyword[kws]+ '"/>')
         }
     }
+    
 
     for(var item of final){
         advSeoElement(item)
